@@ -35,9 +35,9 @@
     $(function () {
         REQ.fetchReq('https://jsonplaceholder.typicode.com/posts', "GET", "")
             .done(function (params) {
-                console.log(params);
                 var dtConfig = {
-                    columns:[{
+                    data: params,
+                    columns: [{
                         data: 'userId',
                         render: function (data) {
                             var i = DT.getInput('text', data);
