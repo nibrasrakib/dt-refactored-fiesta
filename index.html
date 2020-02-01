@@ -26,16 +26,25 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <table id="sample-form-table"></table>
+                <table id="sample-table"></table>
             </div>
         </div>
     </div>
 </body>
 <script type="text/javascript">
     $(function () {
-        REQ.fetchReq('https://jsonplaceholder.typicode.com/posts11/')
-            .then(function (params) {
+        REQ.fetchReq('https://jsonplaceholder.typicode.com/posts', "GET", "")
+            .done(function (params) {
                 console.log(params);
+                var dtConfig = {
+                    columns:[{
+                        data: 'userId',
+                        render: function (data) {
+                            var i = DT.getInput('text', data);
+                            return i;
+                        }
+                    }]
+                }
             });
     });
 </script>
